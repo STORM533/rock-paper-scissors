@@ -1,4 +1,16 @@
 
+const container = document.querySelector("#container");
+const r = document.createElement("div"); 
+const p= document.createElement("div");
+const s = document.createElement("div");
+r.textContent = "rock";
+p.textContent = "paper";
+s.textContent = "scissor";
+container.appendChild(r);
+container.appendChild(p);
+container.appendChild(s);
+
+
 function  getComputerChoice(){
 const minCeil = Math.ceil(0);
 const maxFloor = Math.floor(3);
@@ -70,3 +82,4 @@ playGame();
 */
 console.log("humanScore : "  + humanScore);
 console.log("computerScore : "  + computerScore);
+

@@ -31,9 +31,18 @@ const maxFloor = Math.floor(3);
 
 function getHumanChoice(){
     const buttons = document.querySelectorAll("button");
+    // used to create button and make them to act upon and provide output 
+    //on clicking using addEventListener
+    //as the name suggest it listens for event like clk,dbclk etc.
+    //and do as says upon listening for the events
+    //in this case provide desired output.
     buttons.forEach((button) => {
         button.addEventListener("click", () => {
-            return console.log(this.textContent);
+            const outputs = document.querySelector("#outputs");
+            const op = document.createElement("div");
+            op.setAttribute("id" , "op");
+            outputs.appendChild(op);
+            op.textContent = button.textContent;
         });
     });
 }

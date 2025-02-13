@@ -1,14 +1,16 @@
 
 const container = document.querySelector("#container");
-const r = document.createElement("div"); 
-const p= document.createElement("div");
-const s = document.createElement("div");
+const r = document.createElement("button"); 
+const p= document.createElement("button");
+const s = document.createElement("button");
 r.textContent = "rock";
 p.textContent = "paper";
 s.textContent = "scissor";
+
 container.appendChild(r);
 container.appendChild(p);
 container.appendChild(s);
+
 
 
 function  getComputerChoice(){
@@ -28,8 +30,12 @@ const maxFloor = Math.floor(3);
 
 
 function getHumanChoice(){
-    userChoice = prompt("rock , paper , scissors");
-    return userChoice.toLowerCase();
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            return console.log(this.textContent);
+        });
+    });
 }
     
     
@@ -65,7 +71,10 @@ function playRound(humanChoice , computerChoice){
 }
 
 
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
 
+playRound(humanSelection, computerSelection);
 
 /*function playGame(){
 
@@ -82,4 +91,3 @@ playGame();
 */
 console.log("humanScore : "  + humanScore);
 console.log("computerScore : "  + computerScore);
-

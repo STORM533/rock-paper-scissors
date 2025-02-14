@@ -5,7 +5,7 @@ const p= document.createElement("button");
 const s = document.createElement("button");
 r.textContent = "rock";
 p.textContent = "paper";
-s.textContent = "scissor";
+s.textContent = "scissors";
 
 container.appendChild(r);
 container.appendChild(p);
@@ -26,11 +26,7 @@ const maxFloor = Math.floor(3);
 }
 
 
-
-
-
-function getHumanChoice(){
-    const buttons = document.querySelectorAll("button");
+const buttons = document.querySelectorAll("button");
     // used to create button and make them to act upon and provide output 
     //on clicking using addEventListener
     //as the name suggest it listens for event like clk,dbclk etc.
@@ -42,7 +38,29 @@ function getHumanChoice(){
             const op = document.createElement("div");
             op.setAttribute("id" , "op");
             outputs.appendChild(op);
-            op.textContent = button.textContent;
+            op.textContent = playRound(button.textContent , getComputerChoice());
+            //above sentence assigns op the callback function
+        });
+    });
+    
+
+
+function getHumanChoice(){
+    const buttons = document.querySelectorAll("button");
+    // used to create button and make them to act upon and provide output 
+    //on clicking using addEventListener
+    //as the name suggest it listens for event like clk,dbclk etc.
+    //and do as says upon listening for the events
+    //in this case provide desired output.
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            playRound(button.textContent , getComputerChoice());
+            const outputs = document.querySelector("#outputs");
+            const op = document.createElement("div");
+            op.setAttribute("id" , "op");
+            outputs.appendChild(op);
+            
+            //above sentence assigns op the callback function
         });
     });
 }

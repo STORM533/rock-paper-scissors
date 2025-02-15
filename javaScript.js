@@ -37,6 +37,7 @@ compScore.textContent = "computer Score: " + `${computerScore}`;
 personScore.textContent = "Human Score: " + `${humanScore}`;
 
 
+
 function playRound(humanChoice , computerChoice){
     if((humanChoice === "rock" && computerChoice === "rock") || (humanChoice=== "paper" && computerChoice === "paper") || (humanChoice === "scissors" && computerChoice === "scissors")){
         return "TIE!  COMPUTER CHOSE: " + `${computerChoice}` + " AND YOU CHOSE : " + `${humanChoice}`;
@@ -104,7 +105,27 @@ buttons.forEach((button) => {
     button.style.fontStyle = "3px solid black";
     button.addEventListener("click", () => {
     op.textContent = playRound(button.textContent , getComputerChoice());
-            
+    if(computerScore === 5 ){
+        const output = document.querySelector("#outputs");
+        const compwin = document.createElement("div");
+        output.appendChild(compwin);
+        compwin.textContent = "COMPUTER WINS";
+        document.querySelectorAll("button").forEach((button) =>{
+            button.disabled = true;
+        });
+        
+        return;
+        
+    } else if(humanScore === 5 ){
+        const output = document.querySelector("#outputs");
+        const humanwin = document.createElement("div");
+        output.appendChild(humanwin);
+        humanwin.textContent = "HUMAN WINS";
+        document.querySelectorAll("button").forEach((button) =>{
+            button.disabled = true;
+        });
+        return; //for stopping further execution
+    }       
     });
 });
 }

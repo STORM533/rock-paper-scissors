@@ -26,26 +26,10 @@ const maxFloor = Math.floor(3);
 }
 
 
-const buttons = document.querySelectorAll("button");
-    // used to create button and make them to act upon and provide output 
-    //on clicking using addEventListener
-    //as the name suggest it listens for event like clk,dbclk etc.
-    //and do as says upon listening for the events
-    //in this case provide desired output.
-    buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-            const outputs = document.querySelector("#outputs");
-            const op = document.createElement("div");
-            op.setAttribute("id" , "op");
-            outputs.appendChild(op);
-            op.textContent = playRound(button.textContent , getComputerChoice());
-            //above sentence assigns op the callback function
-        });
-    });
     
 
 
-function getHumanChoice(){
+
     const buttons = document.querySelectorAll("button");
     // used to create button and make them to act upon and provide output 
     //on clicking using addEventListener
@@ -54,16 +38,14 @@ function getHumanChoice(){
     //in this case provide desired output.
     buttons.forEach((button) => {
         button.addEventListener("click", () => {
-            playRound(button.textContent , getComputerChoice());
             const outputs = document.querySelector("#outputs");
             const op = document.createElement("div");
-            op.setAttribute("id" , "op");
+            op.setAttribute = ("id" , "op");
             outputs.appendChild(op);
-            
-            //above sentence assigns op the callback function
+            op.textContent = playRound(button.textContent , getComputerChoice());
         });
     });
-}
+
     
     
 
@@ -73,35 +55,31 @@ let humanScore = 0;
 let computerScore = 0;
 
 function playRound(humanChoice , computerChoice){
-
     if((humanChoice === "rock" && computerChoice === "rock") || (humanChoice=== "paper" && computerChoice === "paper") || (humanChoice === "scissors" && computerChoice === "scissors")){
-        return console.log("TIE COMPUTER CHOSE: " + `${computerChoice}` + " AND YOU CHOSE : " + `${humanChoice}`);
+        return "TIE!  COMPUTER CHOSE: " + `${computerChoice}` + " AND YOU CHOSE : " + `${humanChoice}`;
     }else if(humanChoice === "rock" && computerChoice === "paper"){
         computerScore++;
-        return console.log("YOU LOSE! COMPUTER CHOSE: " + `${computerChoice}` + " AND YOU CHOSE : " + `${humanChoice}`);  
+        return "YOU LOSE! COMPUTER CHOSE: " + `${computerChoice}` + " AND YOU CHOSE : " + `${humanChoice}`;  
     }else if (humanChoice ==="rock" && computerChoice=== "scissors"){
         humanScore++
-        return console.log("YOU WIN! COMPUTER CHOSE: " + `${computerChoice}` + " AND YOU CHOSE : " + `${humanChoice}`);;
+        return "YOU WIN! COMPUTER CHOSE: " + `${computerChoice}` + " AND YOU CHOSE : " + `${humanChoice}`;
     }else if (humanChoice ==="paper" && computerChoice=== "scissors"){
         computerScore++;
-        return console.log("YOU LOSE! COMPUTER CHOSE: " + `${computerChoice}` + " AND YOU CHOSE : " + `${humanChoice}`);  
+        return "YOU LOSE! COMPUTER CHOSE: " + `${computerChoice}` + " AND YOU CHOSE : " + `${humanChoice}`;  
     }else if (humanChoice ==="paper" && computerChoice=== "rock"){
         humanScore++;
-        return console.log("YOU WIN! COMPUTER CHOSE: " + `${computerChoice}` + " AND YOU CHOSE : " + `${humanChoice}`);;
+        return "YOU WIN! COMPUTER CHOSE: " + `${computerChoice}` + " AND YOU CHOSE : " + `${humanChoice}`;
     }else if (humanChoice ==="scissors" && computerChoice=== "rock"){
         computerScore++;
-        return console.log("YOU LOSE! COMPUTER CHOSE: " + `${computerChoice}` + " AND YOU CHOSE : " + `${humanChoice}`);
+        return "YOU LOSE! COMPUTER CHOSE: " + `${computerChoice}` + " AND YOU CHOSE : " + `${humanChoice}`;
     }else if (humanChoice ==="scissors" && computerChoice=== "paper"){
         humanScore++;
-        return console.log("YOU WIN! COMPUTER CHOSE: " + `${computerChoice}` + " AND YOU CHOSE : " + `${humanChoice}`);
+        return "YOU WIN! COMPUTER CHOSE: " + `${computerChoice}` + " AND YOU CHOSE : " + `${humanChoice}`;
     }
 }
 
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
 
 /*function playGame(){
 

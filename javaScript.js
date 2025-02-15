@@ -38,13 +38,14 @@ const maxFloor = Math.floor(3);
     //in this case provide desired output.
     buttons.forEach((button) => {
         button.addEventListener("click", () => {
-            const outputs = document.querySelector("#outputs");
+            playRound(button.textContent , getComputerChoice());
+        });
+    });
+    const outputs = document.querySelector("#outputs");
             const op = document.createElement("div");
             op.setAttribute = ("id" , "op");
             outputs.appendChild(op);
-            op.textContent = playRound(button.textContent , getComputerChoice());
-        });
-    });
+            op.textContent =playRound(button.textContent , getComputerChoice());
 
     
     
@@ -57,7 +58,7 @@ let computerScore = 0;
 function playRound(humanChoice , computerChoice){
     if((humanChoice === "rock" && computerChoice === "rock") || (humanChoice=== "paper" && computerChoice === "paper") || (humanChoice === "scissors" && computerChoice === "scissors")){
         return "TIE!  COMPUTER CHOSE: " + `${computerChoice}` + " AND YOU CHOSE : " + `${humanChoice}`;
-    }else if(humanChoice === "rock" && computerChoice === "paper"){
+    }else if (humanChoice === "rock" && computerChoice === "paper"){
         computerScore++;
         return "YOU LOSE! COMPUTER CHOSE: " + `${computerChoice}` + " AND YOU CHOSE : " + `${humanChoice}`;  
     }else if (humanChoice ==="rock" && computerChoice=== "scissors"){

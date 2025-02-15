@@ -6,11 +6,17 @@ const s = document.createElement("button");
 r.textContent = "rock";
 p.textContent = "paper";
 s.textContent = "scissors";
+document.body.style.display = "flex";
+document.body.style.justifyContent = "center";
+document.body.style.alignItems = "center";
+document.body.style.flexDirection = "column";
+document.body.style.gap  = "50px";
+document.body.style.fontSize = "30px";
 
 container.appendChild(r);
 container.appendChild(p);
 container.appendChild(s);
-
+container.style.gap = "10px";
 
 
 function  getComputerChoice(){
@@ -25,11 +31,16 @@ const maxFloor = Math.floor(3);
     }
 }
 
-
+let computerScore = 0;
+let humanScore = 0;
     
+const outputs = document.querySelector("#outputs");
+        const op = document.createElement("div");
+            op.setAttribute = ("id" , "op");
+            outputs.appendChild(op);
+            
 
-
-
+function startGame(){
     const buttons = document.querySelectorAll("button");
     // used to create button and make them to act upon and provide output 
     //on clicking using addEventListener
@@ -37,23 +48,31 @@ const maxFloor = Math.floor(3);
     //and do as says upon listening for the events
     //in this case provide desired output.
     buttons.forEach((button) => {
+        button.style.height = "100px"
+        button.style.width  = "100px";
+        button.style.background = "lightBlue";
+        button.style.fontStyle = "3px solid black";
         button.addEventListener("click", () => {
-            playRound(button.textContent , getComputerChoice());
+            op.textContent = playRound(button.textContent , getComputerChoice());
+            
         });
     });
-    const outputs = document.querySelector("#outputs");
-            const op = document.createElement("div");
-            op.setAttribute = ("id" , "op");
-            outputs.appendChild(op);
-            op.textContent =playRound(button.textContent , getComputerChoice());
+} 
 
     
     
+const scores = document.querySelector("#scores");
+const compScore = document.createElement("div");
+const personScore = document.createElement("div");
+scores.appendChild(compScore);
+scores.appendChild(personScore);
+scores.style.display = "flex";
+scores.style.gap = "10px";
+scores.style.border= "2px solid black";
 
+compScore.textContent = "computer Score: " + `${computerScore}`;
+personScore.textContent = "Human Score: " + `${humanScore}`;
 
-
-let humanScore = 0;
-let computerScore = 0;
 
 function playRound(humanChoice , computerChoice){
     if((humanChoice === "rock" && computerChoice === "rock") || (humanChoice=== "paper" && computerChoice === "paper") || (humanChoice === "scissors" && computerChoice === "scissors")){
@@ -82,18 +101,6 @@ function playRound(humanChoice , computerChoice){
 
 
 
-/*function playGame(){
-
-    for(let i = 1; i <= 5; i++){
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        console.log("round : " + i);
-        playRound(humanSelection , computerSelection);
-
-    }
     
-}
-playGame();
-*/
-console.log("humanScore : "  + humanScore);
-console.log("computerScore : "  + computerScore);
+
+
